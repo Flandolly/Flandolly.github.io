@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>TriviaMania</title>
@@ -15,19 +16,20 @@
                 <h1 id="modal-header">Tutorial</h1>
                 <div class="p1">
                     <p class="modal-p1">
-                        Welcome to TriviaMania! In this game, your goal is to correctly answer the questions as fast as possible!
+                        Welcome to TriviaMania! In this game, your goal is to correctly answer the questions as fast as
+                        possible!
                         The faster you are, the more points you get!
                     </p>
-                    <img class="modal-p1" src="C://Users/fland/Triviamania/Game/imgs/timer.png" alt="Timer">
+                    <img class="modal-p1" src="imgs/timer.png" alt="Timer">
                 </div>
                 <div class="p2">
                     <p class="modal-p2" style="margin: 0">Questions can range from a variety of topics, from science, to
                         history, to movies, and everything in between!
                     </p>
                     <div class="img-container">
-                        <img class="modal-p2" src="C://Users/fland/Triviamania/Game/imgs/history.png" alt="History">
-                        <img class="modal-p2" src="C://Users/fland/Triviamania/Game/imgs/science.png" alt="Science">
-                        <img class="modal-p2" src="C://Users/fland/Triviamania/Game/imgs/math.png" alt="Math">
+                        <img class="modal-p2" src="imgs/history.png" alt="History">
+                        <img class="modal-p2" src="imgs/science.png" alt="Science">
+                        <img class="modal-p2" src="imgs/math.png" alt="Math">
                     </div>
                 </div>
                 <div class="p3">
@@ -39,7 +41,7 @@
                         There is a total of 10 rounds for you to complete and achieve the highest
                         score you can. Good luck!
                     </p>
-                    <img class="modal-p3" src="C://Users/fland/Triviamania/Game/imgs/thumbs-up.png" alt="Good Luck">
+                    <img class="modal-p3" src="thumbs-up.png" alt="Good Luck">
                 </div>
                 <!--Slideshow for Tutorial-->
                 <div id="modal-footer">
@@ -75,43 +77,45 @@
         <p>Please Upload a Question List Text File</p>
     </div>
 </header>
+
 <body>
-<div id="container">
-    <div id="question-area">
-        <div class="questions" id="timer">
-            <div id="timer-title">
-                TIME
-            </div>
-            <div id="timer-number">
+    <div id="container">
+        <div id="question-area">
+            <div class="questions" id="timer">
+                <div id="timer-title">
+                    TIME
+                </div>
+                <div id="timer-number">
 
+                </div>
             </div>
-        </div>
-        <div class="questions" id="main-body">
-            <div class="question-text" style="text-align: center">
-                <p id="category-title">Category:</p>
-                <p id="category"></p>
-                <p id="q-text">
+            <div class="questions" id="main-body">
+                <div class="question-text" style="text-align: center">
+                    <p id="category-title">Category:</p>
+                    <p id="category"></p>
+                    <p id="q-text">
 
-                </p>
+                    </p>
+                </div>
+            </div>
+            <div class="questions">
+                <button id="lock">LOCK ANSWER</button>
+            </div>
+            <div class="start">
+                <button id="start" disabled="disabled">Play Game</button>
             </div>
         </div>
-        <div class="questions">
-            <button id="lock">LOCK ANSWER</button>
+        <div id="choice-area">
+            <button class="choice-buttons" id="c1" disabled="disabled">Choice 1</button>
+            <button class="choice-buttons" id="c2" disabled="disabled">Choice 2</button>
+            <button class="choice-buttons" id="c3" disabled="disabled">Choice 3</button>
+            <button class="choice-buttons" id="c4" disabled="disabled">Choice 4</button>
         </div>
-        <div class="start">
-            <button id="start" disabled="disabled">Play Game</button>
-        </div>
+
     </div>
-    <div id="choice-area">
-        <button class="choice-buttons" id="c1" disabled="disabled">Choice 1</button>
-        <button class="choice-buttons" id="c2" disabled="disabled">Choice 2</button>
-        <button class="choice-buttons" id="c3" disabled="disabled">Choice 3</button>
-        <button class="choice-buttons" id="c4" disabled="disabled">Choice 4</button>
-    </div>
-
-</div>
 </body>
 <footer>
 
 </footer>
+
 </html>
