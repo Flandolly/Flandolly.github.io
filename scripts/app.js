@@ -1,3 +1,40 @@
+/****************************
+ **** Global Variables
+ ****************************/
+
+const startButton = document.getElementById("start")
+const choices = document.querySelectorAll(".choice-buttons")
+const choice1 = document.getElementById("c1")
+const choice2 = document.getElementById("c2")
+const choice3 = document.getElementById("c3")
+const choice4 = document.getElementById("c4")
+const modal = document.getElementById("end-modal")
+const endButton = document.getElementById("restart")
+const score = document.getElementById("score")
+const rnd = document.getElementById("round")
+const pScore = document.getElementById("player-score")
+const hScore = document.getElementById("high-score")
+const question = document.getElementById("q-text")
+const category = document.getElementById("category")
+const timer = document.getElementById("timer-number")
+const lockButton = document.getElementById("lock")
+const questionText = document.getElementById("q-text")
+const timeOver = document.getElementById("time-over")
+const savedQuestions = localStorage.getItem("questionList")
+const scoreChange = document.getElementById("score-change")
+//const changeFile = document.createElement("button")
+
+
+let time
+let colorInterval
+let runningTotal = 0
+let fileString
+let playedQuestions = []
+let round = 1
+let highScore = 0
+
+
+
 
 
 /****************************
@@ -14,7 +51,6 @@
     let pageIndex = 0
 
     function openModal() {
-        // changePage("def")
         return modal.style.display = "block"
     }
 
@@ -85,8 +121,6 @@
  ****************************/
 
 {
-    const startButton = document.getElementById("start")
-    const choices = document.querySelectorAll(".choice-buttons")
 
     startButton.onclick = function () {
         startButton.style.display = "none"
@@ -105,24 +139,18 @@
 
 {
     function endGame() {
-        const modal = document.getElementById("end-modal")
-        const endButton = document.getElementById("restart")
-        const score = document.getElementById("score")
-        const rnd = document.getElementById("round")
-        const pScore = document.getElementById("player-score")
-        const choices = document.querySelectorAll(".choice-buttons")
-        const question = document.getElementById("q-text")
-        const category = document.getElementById("category")
 
         modal.style.display = "block"
         pScore.innerText = `Your Score: ${runningTotal}`
+        hScore.innerText = `High Score: ${setHighScore()}`
+
 
         endButton.onclick = function() {
             modal.style.display = "none"
             round = 1
             runningTotal = 0
             playedQuestions = []
-            score.innerText = "Score: 0"
+            score.innerHTML = "Score: 0<span id=\"score-change\"></span>"
             rnd.innerText = "Round: 1"
             resetState()
             document.getElementById("start").style.display = "block"
@@ -132,17 +160,21 @@
             category.innerText = ""
         }
     }
-}
 
+    function setHighScore(playerScore) {
+        if (playerScore > highScore) {
+            highScore = playerScore
+        }
+
+        return highScore
+    }
+}
 
 /****************************
  **** Timer
  ****************************/
 
 {
-    const timer = document.getElementById("timer-number")
-    var time
-    var colorInterval
 
     timer.innerText = parseInt("30").toFixed(2)
 
@@ -169,13 +201,9 @@
 
     //Generates time out message
     function generateTimeUp() {
-        const timeOver = document.createElement("p")
-        timeOver.innerText = "Time's Up!"
-        timeOver.classList.add("question-text")
-        timeOver.id = "time-over"
-        timeOver.style.color = "red"
 
-        document.getElementById("main-body").append(timeOver)
+        timeOver.style.display = "block"
+
         setTimeout(function () {
             timeOver.style.display = "none"
         }, 5000)
@@ -188,8 +216,7 @@
     }
     //Prevents buttons from registering clicks when the timer runs out
     function disableButtons() {
-        const choices = document.querySelectorAll(".choice-buttons")
-        const lockButton = document.getElementById("lock")
+
         choices.forEach(choice => {
             choice.setAttribute("disabled", "disabled")
             choice.style.onmouseover = ""
@@ -230,8 +257,6 @@
 
 {
     // Grabs choice buttons and lock button
-    const choices = document.querySelectorAll(".choice-buttons")
-    const lockButton = document.getElementById("lock")
     let userChoice = ""
     lockButton.setAttribute("disabled", "disabled")
 
@@ -249,8 +274,9 @@
         if (checkAnswer(document.querySelector(".clicked"))) {
             calculatePoints()
         } else {
-            document.getElementById("score-change").style.color = "black"
-            document.getElementById("score-change").innerText = "+0"
+            scoreChange.style.display = "inline"
+            scoreChange.style.color = "black"
+            scoreChange.innerText = "+0"
         }
         setTimeout(function() {
             document.getElementById("score-change").style.display = "none"
@@ -323,35 +349,38 @@
         // }
     }
 
-    var qList = new QuestionList()
-    var runningTotal = 0
-    var fileString
-    var playedQuestions = []
-    var round = 1
+    const qList = new QuestionList()
 
     function loadQuestionList() {
-        const file = document.createElement("input")
-        file.id = "question-list"
-        file.setAttribute("type", "file")
-        file.setAttribute("accept", ".txt")
+        if (savedQuestions != null) {
+            document.getElementById("q-title").style.display = "none"
+            startButton.disabled = ""
+            parseQuestionList(savedQuestions)
+        } else {
+            const file = document.createElement("input")
+            file.id = "question-list"
+            file.setAttribute("type", "file")
+            file.setAttribute("accept", ".txt")
 
-        /*
-        Sourced from: https://www.geeksforgeeks.org/how-to-read-a-local-text-file-using-javascript/
-         */
+            /*
+            Sourced from: https://www.geeksforgeeks.org/how-to-read-a-local-text-file-using-javascript/
+             */
 
-        file.addEventListener("change", function(event) {
-            const fileList = event.target.files
-            const reader = new FileReader()
-            reader.onload = function() {
-                fileString = reader.result
-                document.getElementById("q-title").style.display = "none"
-                parseQuestionList(fileString)
-                document.getElementById("start").disabled = ""
-                file.style.display = "none"
-            }
-            reader.readAsText(fileList[0])
-        })
-        document.querySelector("header").append(file)
+            file.addEventListener("change", function(event) {
+                const fileList = event.target.files
+                const reader = new FileReader()
+                reader.onload = function() {
+                    fileString = reader.result
+                    document.getElementById("q-title").style.display = "none"
+                    localStorage.setItem("questionList", fileString)
+                    parseQuestionList(fileString)
+                    document.getElementById("start").disabled = ""
+                    file.style.display = "none"
+                }
+                reader.readAsText(fileList[0])
+            })
+            document.querySelector("header").append(file)
+        }
     }
 
     function parseQuestionList(input) {
@@ -376,12 +405,6 @@
 
     function showQuestion(questionList) {
         //Grabbing all the necessary question and choice elements
-        const questionText = document.getElementById("q-text")
-        const category = document.getElementById("category")
-        const choice1 = document.getElementById("c1")
-        const choice2 = document.getElementById("c2")
-        const choice3 = document.getElementById("c3")
-        const choice4 = document.getElementById("c4")
 
         const randomNum = Math.floor(Math.random() * questionList.length)
 
@@ -432,17 +455,15 @@
 
     function calculatePoints() {
         const timerStopped = document.getElementById("timer-number").innerText
-        const score = document.getElementById("score")
-        const scoreChange = document.getElementById("score-change")
         const base = 300
         const multiplier = 50
         const total = base + (parseInt(timerStopped) * multiplier)
 
         runningTotal += total
-        score.innerText = `Score: ${runningTotal}`
         scoreChange.innerText = `+${total}`
+        score.innerHTML = `Score: ${runningTotal}<span id="score-change">${scoreChange.innerText}</span>`
+        scoreChange.style.display = "inline"
         scoreChange.style.color = "limegreen"
-        scoreChange.style.display = "block"
     }
 
 
@@ -481,4 +502,6 @@
         green = 255
     }
 }
+
+
 loadQuestionList()
