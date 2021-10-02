@@ -10,6 +10,7 @@ body {
     background: #FFF;
 }
 /* ============= Animation background ========= */
+/*https://www.sliderrevolution.com/resources/css-animated-background/*/
 .background {
     background: linear-gradient(132deg, #FC415A, #591BC5, #212335);
     background-size: 400% 400%;
@@ -60,95 +61,7 @@ body {
     left: 50vw;
     top: 10vh;
 }
-/* ================= Header ============ */
-header{
-    position: absolute;
-    top:0%;
-    left: 0%;
-    width:100%;
-    margin: 0;
-    padding: 0;
-}
-/* navbar */
-nav{
-    color: #FFF;
-    float: right;
-    margin:30px 90px;
-}
-nav ul{
-    list-style: none;
-}
-nav ul li {
-    float: left;
-    transition: .3s;
-}
-nav ul li a{
-    text-decoration: none;
-    color: #EFEEF5;
-    transition: 0.5s;
-    font-size: 15px;
-    margin-left:16px;
-}
-nav ul li:hover a{
-    text-decoration: none;
-    color: #591BC5;;
-}
-nav ul li:hover{
-    height: 45px;
-    padding-top: 30px;
-    margin-top: -30px;
-    background: #EFEEF5;
-    text-decoration: none;
-    transform: skew(15deg);
-}
-/* Logo */
-.logo{
-    width: 35px;
-    height: 35px;
-    background: #EFEEF5;
-    margin: 40px 63px;
-    float: left;
-    transform: rotate(-30deg);
-}
-.logo span{
-    color: #591BC5;
-    font-size: 2em;
-    line-height: 1.4;
-    padding-left: 5px;
-    font-weight: bold;
-}
-/* Header content & title & button*/
-.header-content{
-    margin-top:25%;
-    text-align: center;
-    color:  #EFEEF5;
-}
-.header-content h1{
-    text-transform: uppercase;
-    font-size: 3em;
-    letter-spacing: 1px;
-}
-.header-content p {
-    font-size: 20px;
-    line-height: 1.5;
-    margin: 20px auto;
-}
-.header-content button{
-    width: 140px;
-    margin:20px 10px;
-    color: #591BC5;
-    font-size: 17px;
-    border:1px solid #EFEEF5;
-    font-weight: 500;
-    background: #EFEEF5;
-    border-radius: 20px;
-    padding: 10px;
-    cursor:pointer;
-    transition: .3s;
-}
-.header-content button:hover{
-    border-radius: 0;
-}
+
 /* Animate Background*/
 @keyframes Gradient {
     0% {
@@ -169,5 +82,37 @@ nav ul li:hover{
     to {
         transform: scale(20) rotate(960deg) translate(-50%, -50%);
         opacity: 0;
+    }
+}
+
+/* Header Text Animation */
+
+.animated:before {
+    content: "Software Engineer";
+    -webkit-animation: shiftTitles 8s infinite 0s, spin 8s infinite 0s;
+}
+
+@keyframes shiftTitles {
+    0% {
+        content: "Software Engineer";
+    }
+    25% {
+        content: "Animal Lover"
+    }
+    50% {
+        content: "World Traveller";
+    }
+    75% {
+        content: "Gamer"
+    }
+    100% {
+        content: "Nerd"
+    }
+
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(180deg);
     }
 }
