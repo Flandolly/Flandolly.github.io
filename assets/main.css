@@ -91,12 +91,11 @@ body {
 }
 
 .animated span{
-    animation: topToBottom 7.5s infinite 0s;
+    animation: topToBottom 7s infinite 0s;
     -ms-animation: topToBottom 7s infinite 0s;
     -webkit-animation: topToBottom 7s infinite 0s;
     overflow: hidden;
     position: absolute;
-
     display: inline-block;
     visibility: hidden;
 }
@@ -145,4 +144,8 @@ body {
     71% { visibility: hidden; }
     85% { visibility: hidden; }
     100% { visibility: visible; }
+}
+
+.navigation {
+    width: 100%;
 }
