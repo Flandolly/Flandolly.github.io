@@ -149,3 +149,33 @@ body {
 .navigation {
     width: 100%;
 }
+
+.item {
+    padding: 10px 30px;
+}
+
+.main {
+    color: #591BC5;
+}
+
+.about-title {
+    display: inline;
+    text-decoration: underline;
+    text-underline-offset: 15px;
+}
+
+.about-icon {
+    width: 62px;
+    height: 62px;
+    margin-top: 1px;
+    border: 3px solid #591BC5;
+    border-radius: 31px;
+}
+
+.about-description {
+    margin-top: 2.5rem;
+}
+
+.desc-text {
+    font-size: 18px;
+}
