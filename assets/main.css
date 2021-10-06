@@ -158,13 +158,13 @@ body {
     color: #591BC5;
 }
 
-.about-title {
+.about-title, .project-title, .skill-title {
     display: inline;
     text-decoration: underline;
     text-underline-offset: 15px;
 }
 
-.about-icon {
+.about-icon, .project-icon, .skill-icon{
     width: 62px;
     height: 62px;
     margin-top: 1px;
@@ -180,4 +180,16 @@ body {
 
 .desc-text {
     font-size: 18px;
+}
+.skill-title {
+    margin-bottom: 30px;
+}
+
+.project-list {
+    margin-top: 2rem;
+}
+
+.project-item {
+    margin: 10px 0;
+    width: 100%;
 }
