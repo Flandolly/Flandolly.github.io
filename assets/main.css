@@ -159,13 +159,13 @@ body {
     color: #591BC5;
 }
 
-.about-title, .project-title, .skill-title {
+.about-title, .project-title, .skill-title, .hobby-title, .contact-title {
     display: inline;
     text-decoration: underline;
     text-underline-offset: 15px;
 }
 
-.about-icon, .project-icon, .skill-icon {
+.about-icon, .project-icon, .skill-icon, .hobby-icon, .contact-icon, .loc-icon {
     width: 62px;
     height: 62px;
     margin-top: 1px;
@@ -202,10 +202,18 @@ body {
     margin: 20px;
 }
 
-.lang-title, .movie-title, .game-title, .show-title, .music-title {
-    margin-bottom: 10px
+.contact-title {
+    margin-bottom: 3rem;
 }
 
-.lang, .movie, .game, .show, .music {
+.loc-icon {
+    margin-right: 30px;
+}
+
+.lang-title, .movie-title, .game-title, .show-title, .music-title {
+    margin-bottom: 10px;
+}
+
+.lang, .movie, .game, .show, .music, .contact {
     list-style-type: none;
 }
