@@ -2,13 +2,15 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     box-sizing: border-box;
 }
-.container-fluid{
+
+.container-fluid {
     height: 100%;
     margin: 0;
     padding: 0;
     width: 100%;
     background: #FFF;
 }
+
 /* ============= Animation background ========= */
 /*https://www.sliderrevolution.com/resources/css-animated-background/*/
 .background {
@@ -19,9 +21,10 @@ body {
     height: 100vh;
     width: 100%;
     overflow: hidden;
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
 }
+
 .cube {
     position: absolute;
     top: 5vh;
@@ -33,29 +36,35 @@ body {
     transform: scale(0) rotate(0deg) translate(-50%, -50%);
     animation: cube 10s ease-in forwards infinite;
 }
+
 .cube:nth-child(2n) {
-    border-color: #FFF ;
+    border-color: #FFF;
 }
+
 .cube:nth-child(2) {
     animation-delay: 2s;
     left: 25vw;
     top: 40vh;
 }
+
 .cube:nth-child(3) {
     animation-delay: 4s;
     left: 75vw;
     top: 50vh;
 }
+
 .cube:nth-child(4) {
     animation-delay: 6s;
     left: 90vw;
     top: 10vh;
 }
+
 .cube:nth-child(5) {
     animation-delay: 8s;
     left: 10vw;
     top: 85vh;
 }
+
 .cube:nth-child(6) {
     animation-delay: 10s;
     left: 50vw;
@@ -74,6 +83,7 @@ body {
         background-position: 0 50%;
     }
 }
+
 @keyframes cube {
     from {
         transform: scale(0) rotate(0deg) translate(-50%, -50%);
@@ -90,7 +100,7 @@ body {
     justify-content: center;
 }
 
-.animated span{
+.animated span {
     animation: topToBottom 7s infinite 0s;
     -ms-animation: topToBottom 7s infinite 0s;
     -webkit-animation: topToBottom 7s infinite 0s;
@@ -101,50 +111,68 @@ body {
     height: 6%;
 }
 
-.animated span:nth-child(2){
+.animated span:nth-child(2) {
     animation-delay: 1s;
     -ms-animation-delay: 1s;
     -webkit-animation-delay: 1s;
 }
 
-.animated span:nth-child(3){
+.animated span:nth-child(3) {
     animation-delay: 2s;
     -ms-animation-delay: 2s;
     -webkit-animation-delay: 2s;
 }
 
-.animated span:nth-child(4){
+.animated span:nth-child(4) {
     animation-delay: 3s;
     -ms-animation-delay: 3s;
     -webkit-animation-delay: 3s;
 }
 
-.animated span:nth-child(5){
+.animated span:nth-child(5) {
     animation-delay: 4s;
     -ms-animation-delay: 4s;
     -webkit-animation-delay: 4s;
 }
-.animated span:nth-child(6){
+
+.animated span:nth-child(6) {
     animation-delay: 5s;
     -ms-animation-delay: 5s;
     -webkit-animation-delay: 5s;
 }
-.animated span:nth-child(7){
+
+.animated span:nth-child(7) {
     animation-delay: 6s;
     -ms-animation-delay: 6s;
     -webkit-animation-delay: 6s;
 }
 
 
-@keyframes topToBottom{
-    0%  { visibility: hidden; }
-    14% { visibility: hidden;  }
-    28% { visibility: hidden;  }
-    42% { visibility: hidden;  }
-    57% { visibility: hidden;  }
-    71% { visibility: hidden; }
-    85% { visibility: hidden; }
-    100% { visibility: visible; }
+@keyframes topToBottom {
+    0% {
+        visibility: hidden;
+    }
+    14% {
+        visibility: hidden;
+    }
+    28% {
+        visibility: hidden;
+    }
+    42% {
+        visibility: hidden;
+    }
+    57% {
+        visibility: hidden;
+    }
+    71% {
+        visibility: hidden;
+    }
+    85% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
 }
 
 .navigation {
@@ -182,6 +210,7 @@ body {
 .desc-text {
     font-size: 18px;
 }
+
 .skill-title {
     margin-bottom: 30px;
 }
@@ -194,6 +223,7 @@ body {
     margin: 10px 0;
     width: 100%;
 }
+
 .hobby {
     border: 1px solid black;
     border-radius: 5px;
@@ -216,4 +246,24 @@ body {
 
 .lang, .movie, .game, .show, .music, .contact {
     list-style-type: none;
+}
+
+.hobby-list {
+    flex-direction: column;
+}
+
+@media screen and (min-width: 450px) {
+    .hobby-list {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .project-item {
+        width: 450px;
+    }
+
+    .hobby {
+        width: 30%;
+    }
 }
