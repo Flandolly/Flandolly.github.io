@@ -33,13 +33,46 @@
 <div class="container main">
     <div class="navbar">
         <ul class="nav navigation justify-content-between flex-nowrap">
-            <li class="nav-item item">About</li>
-            <li class="nav-item item">Projects</li>
-            <li class="nav-item item">Contacts</li>
+            <li class="nav-item item" id="about" onclick="scrollToAbout()">About</li>
+            <li class="nav-item item" id="project" onclick="scrollToProject()">Projects</li>
+            <li class="nav-item item" id="contact" onclick="scrollToContact()">Contacts</li>
         </ul>
+        <script>
+            aboutBtn = document.getElementById("about")
+
+            function scrollToAbout() {
+                //alert(navigator.userAgentData.mobile)
+                if (navigator.userAgentData.mobile !== true) {
+                    document.body.scrollTo(0, 1020)
+                    document.documentElement.scrollTo(0, 1020)
+                } else {
+                    document.body.scrollTo(0, 690)
+                    document.documentElement.scrollTo(0, 690)
+                }
+            }
+            function scrollToProject() {
+                //alert(navigator.userAgentData.mobile)
+                if (navigator.userAgentData.mobile !== true) {
+                    document.body.scrollTo(0, 1790)
+                    document.documentElement.scrollTo(0, 1790)
+                } else {
+                    document.body.scrollTo(0, 2090)
+                    document.documentElement.scrollTo(0, 2090)
+                }
+            }
+            function scrollToContact() {
+                //alert(navigator.userAgentData.mobile)
+                if (navigator.userAgentData.mobile !== true) {
+                    document.body.scrollTo(0, 5690)
+                    document.documentElement.scrollTo(0, 5690)
+                } else {
+                    document.body.scrollTo(0, 5690)
+                    document.documentElement.scrollTo(0, 5690)
+                }
+            }
+        </script>
     </div>
     <div class="container-fluid d-flex justify-content-between about display-1">
-<!--        <div class="about-icon text-center display-3">?</div>-->
         <img class="about-icon" src="https://img.icons8.com/color-glass/48/000000/question-mark.png" alt=""/>
         <div class="about-title">About Me</div>
     </div>
@@ -191,36 +224,53 @@
     </div>
     <div class="contact-group d-flex">
         <img class="loc-icon" src="https://img.icons8.com/fluency/48/000000/location.png" alt=""/>
-        <div class="display-6 d-flex flex-column">
+        <div class="display-6 d-flex flex-column ctc">
             <div>Location:</div>
             <div>Amsterdam, NY</div>
         </div>
     </div>
     <div class="contact-group d-flex">
         <img class="loc-icon" src="https://img.icons8.com/color/48/000000/email.png" alt=""/>
-        <div class="display-6 d-flex flex-column">
+        <div class="display-6 d-flex flex-column ctc">
             <div>E-Mail:</div>
             <a href="mailto:whetherchristina@gmail.com">whetherschristina@gmail.com</a>
         </div>
     </div>
     <div class="contact-group d-flex">
         <img class="loc-icon" src="https://img.icons8.com/ios-glyphs/48/4a90e2/linkedin.png" alt=""/>
-        <div class="display-6 d-flex flex-column">
+        <div class="display-6 d-flex flex-column ctc">
             <div>LinkedIn:</div>
             <a href="https://www.linkedin.com/in/cwhethers" target="_blank">cwhethers</a>
         </div>
     </div>
     <div class="contact-group d-flex">
         <img class="loc-icon" src="https://img.icons8.com/color/48/000000/resume.png" alt=""/>
-        <div class="display-6 d-flex flex-column">
+        <div class="display-6 d-flex flex-column ctc">
             <div>Resume:</div>
-            <a href="assets/CTW-Resume.pdf" target="_blank">Click Here!</a>
+            <a href="assets/CTW-Resume.pdf" target="_blank">PDF</a>
         </div>
     </div>
 </div>
 </body>
 <footer>
-
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top &#8593;</button>
 </footer>
+<script charset="utf-8">
+    scrollButton = document.getElementById("myBtn")
 
+    window.onscroll = function() {scrollFunction()}
+
+    function scrollFunction() {
+        if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollButton.style.display = "block"
+        } else {
+            scrollButton.style.display = "none"
+        }
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0
+        document.documentElement.scrollTop = 0
+    }
+</script>
 </html>
